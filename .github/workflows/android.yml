@@ -17,6 +17,7 @@ jobs:
       with:
         to: ${{ secrets.telegram_chat_id }}
         token: ${{ secrets.telegram_bot_token }}
+        args: ${{ github.event_name }}.
 
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
