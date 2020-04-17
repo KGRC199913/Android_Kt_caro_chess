@@ -20,13 +20,10 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-      
-    - name: Telegram Action
-      uses: xinthink/action-telegram@v1.1
+    - uses: actions/checkout@master
+    - name: send custom message with args
+      uses: appleboy/telegram-action@master
       with:
-        # The Telegram Bot token
-        botToken: $ {{ secrets.telegram_bot_token }}
-        # The target to which the message will be sent, can be a Telegram Channel or Group
-        chatId: $ {{ secrets.telegram_channel_id }}
-        # The current status of the job: job.status, defaults to 'success'
-        jobStatus: $ {{ job.status }}
+        to: ${{ secrets.telegram_channel_id }}
+        token: ${{ secrets.telegram_bot_token }}
+        args: The ${{ github.event_name }} event triggered first step.
