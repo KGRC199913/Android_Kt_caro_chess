@@ -26,4 +26,4 @@ jobs:
       with:
         to: ${{ secrets.telegram_channel_id }}
         token: ${{ secrets.telegram_bot_token }}
-        args: The ${{ github.event_name }} event triggered first step.
+        args: New event ${{ github.event_name }}.
