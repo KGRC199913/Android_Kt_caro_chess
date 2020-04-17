@@ -19,4 +19,12 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./gradlew build
+      
+      
+    - uses: yanzay/notify-telegram@v0.1.0
+      if: always()
+      with:
+        chat: ${{ secrets.channel_name }} # user id or channel name secret
+        token: ${{ secrets.telegram_bot_token }} # token secret
+        status: ${{ job.status }} # do not modify this line
 
