@@ -21,10 +21,12 @@ jobs:
       run: ./gradlew build
       
       
-    - uses: yanzay/notify-telegram@v0.1.0
-      if: always()
+    - name: Telegram Action
+      uses: xinthink/action-telegram@v1.1
       with:
-        chat: ${{ secrets.telegram_channel }} # user id or channel name secret
-        token: ${{ secrets.telegram_bot_token }} # token secret
-        status: ${{ job.status }} # do not modify this line
-
+        # The Telegram Bot token
+        botToken: $ {{ secrets.telegram_bot_token }}
+        # The target to which the message will be sent, can be a Telegram Channel or Group
+        chatId: $ {{ secrets.telegram_channel_id }}
+        # The current status of the job: job.status, defaults to 'success'
+        jobStatus: $ {{ job.status }}
