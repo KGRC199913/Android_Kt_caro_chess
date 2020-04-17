@@ -26,4 +26,4 @@ jobs:
       with:
         to: ${{ secrets.telegram_channel_id }}
         token: ${{ secrets.telegram_bot_token }}
-        args: New event ${{ github.event_name }}.
+        args: New event ${{ github.event_name }} at repo $ {{ repo }}.
